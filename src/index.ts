@@ -172,6 +172,14 @@ function _verify(public_key: Point, pi: number[], alpha: number[]) {
   return _proof_to_hash(pi);
 }
 
+function _validate_key(public_key_string: number[]) {
+  const public_key = string_to_point(public_key_string)
+  if (public_key == 'INVALID' || public_key.isInfinity()) {
+    throw new Error('Invalid public key');
+  }
+  return public_key;
+}
+
 export function keygen() {
   const keypair = EC.genKeyPair();
   const secret_key = keypair.getPrivate('hex');
@@ -199,4 +207,8 @@ export function verify(public_key: string, pi: string, alpha: string) {
     utils.toArray(alpha, 'hex')
   );
   return utils.toHex(beta);
+}
+
+export function validate_key(public_key: string) {
+  return _validate_key(utils.toArray(public_key, 'hex'))
 }
