@@ -1,0 +1,27 @@
+{
+  "name": "ecvrf",
+  "version": "0.0.1",
+  "description": "Elliptic Curve VRF",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "ts-node src/test.ts",
+    "prepare": "npm run build",
+    "version": "git add -A",
+    "postversion": "git push && git push --tags"
+  },
+  "author": "icepeng",
+  "license": "MIT",
+  "dependencies": {
+    "bn.js": "^5.1.3",
+    "elliptic": "^6.5.3",
+    "js-sha256": "^0.9.0",
+    "minimalistic-crypto-utils": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/bn.js": "^4.11.6",
+    "@types/elliptic": "^6.4.12",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.1.2"
+  }
+}
