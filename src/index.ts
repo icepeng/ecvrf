@@ -173,7 +173,7 @@ function _verify(public_key: Point, pi: number[], alpha: number[]) {
 }
 
 function _validate_key(public_key_string: number[]) {
-  const public_key = string_to_point(public_key_string)
+  const public_key = string_to_point(public_key_string);
   if (public_key == 'INVALID' || public_key.isInfinity()) {
     throw new Error('Invalid public key');
   }
@@ -200,7 +200,7 @@ export function proof_to_hash(pi: string): string {
   return utils.toHex(beta);
 }
 
-export function verify(public_key: string, pi: string, alpha: string) {
+export function verify(public_key: string, pi: string, alpha: string): string {
   const beta = _verify(
     EC.curve.decodePoint(public_key, 'hex'),
     utils.toArray(pi, 'hex'),
@@ -210,5 +210,6 @@ export function verify(public_key: string, pi: string, alpha: string) {
 }
 
 export function validate_key(public_key: string) {
-  return _validate_key(utils.toArray(public_key, 'hex'))
+  _validate_key(utils.toArray(public_key, 'hex'));
+  return;
 }
